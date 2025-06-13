@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quan Thánh Đế Quân - Xin Xăm Linh Ứng</title>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Zhi+Mang+Xing&display=swap');
+
+        :root {
+            --bg-color: #f3eade;
+            --main-color: #a8432a;
+            --text-color: #3d2c21;
+            --card-bg: #fffbf2;
+            --border-color: #d1bfa7;
+            --font-serif: 'Zhi Mang Xing', cursive;
+            --font-sans: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            width: 120px;
+            height: auto;
+            border-radius: 50%;
+            border: 4px solid var(--main-color);
+            background-color: #fff; /* Thêm nền trắng phòng trường hợp ảnh trong suốt */
+        }
+
+        h1 {
+            color: var(--main-color);
+            font-size: 2.2rem;
+            margin: 10px 0 5px 0;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1rem;
+            color: #7a5e4a;
+        }
+
+        #interaction-zone {
+            padding: 20px 0;
+        }
+        
+        #hu-xam {
+            cursor: pointer;
+            width: 150px;
+            transition: transform 0.1s;
+        }
+
+        #hu-xam.shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+        @keyframes shake {
+          10%, 90% { transform: translate3d(-1px, 0, 0); }
+          20%, 80% { transform: translate3d(2px, 0, 0); }
+          30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+          40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .button {
+            background-color: var(--main-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #8c321d;
+        }
+        .button:disabled {
+            background-color: #bcaaa4;
+            cursor: not-allowed;
+        }
+
+        #keo-zone {
+            margin-top: 20px;
+        }
+        .keo-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .keo {
+            width: 80px;
+            height: 40px;
+            transition: transform 0.5s ease-out;
+        }
+        
+        #message-box {
+            min-height: 40px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        #result-card {
+            background: #fff;
+            border: 2px solid var(--main-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        #result-card h2 {
+            text-align: center;
+            color: var(--main-color);
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        #result-card .poem {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            line-height: 1.5;
+            text-align: center;
+            white-space: pre-wrap;
+            background: #fdfaf4;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        #result-card .section-title {
+            font-weight: bold;
+            color: var(--main-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        
+        #result-card p {
+            line-height: 1.7;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<header>
+<img alt="Quan Thánh Đế Quân" src="https://i.pinimg.com/originals/8a/37/33/8a373398ca5f2d7e38b56ce5685a1c9c.jpg"/>
+<h1>Quan Thánh Đế Quân Linh Xăm</h1>
+<p>Thành tâm cầu nguyện, Thánh ý sẽ ứng nghiệm</p>
+</header>
+<main id="main-content">
+<p>📜 Hướng dẫn: Hãy thành tâm cầu nguyện trước khi nhấn vào hũ xăm. Sau khi chọn được quẻ, bạn cần gieo keo để xin ý chỉ của Quan Thánh Đế Quân.</p><blockquote style="font-style: italic; background: #fffbe6; padding: 10px; border-left: 5px solid #a8432a; margin-bottom: 20px;">🙏 Lời khấn vái gợi ý: 'Nam mô Quan Thánh Đế Quân, con tên là..., hôm nay thành tâm kính lễ, xin cầu một quẻ xăm để soi sáng đường đi nước bước, mong Ngài hiển linh chỉ dạy.'</blockquote><div id="interaction-zone">
+<p>Hãy tĩnh tâm, nghĩ về điều bạn muốn hỏi và nhấn vào hũ xăm.</p>
+<img alt="Hũ Xăm" id="hu-xam" src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/04/xin-xam-quan-am.jpg"/>
+</div>
+<div class="hidden" id="keo-zone">
+<p id="keo-message">Đã chọn được quẻ xăm. Xin hãy gieo keo để thỉnh Thánh ý.</p>
+<div class="keo-container">
+<img alt="Keo" class="keo" id="keo1" src="https://product.hstatic.net/1000352130/product/_dsc1543_b27e89ff172f4fec8c8df48a8efe7243.jpg"/>
+<img alt="Keo" class="keo" id="keo2" src="https://product.hstatic.net/1000352130/product/_dsc1543_b27e89ff172f4fec8c8df48a8efe7243.jpg"/>
+</div>
+<button class="button" id="btnGieoKeo">Gieo Keo</button>
+</div>
+<div id="message-box"></div>
+</main>
+<div class="hidden" id="result-card">
+<h2 id="xam-title"></h2>
+<div class="poem" id="xam-poem"></div>
+<p class="section-title">【Thánh Ý】</p>
+<p id="xam-thanh-y"></p>
+<p class="section-title">【Tích Xưa】</p>
+<p id="xam-tich-xua"></p>
+<p class="section-title">【Giải Nghĩa】</p>
+<p id="xam-giai-nghia"></p>
+</div>
+<button class="button hidden" id="btnReset">Xin Xăm Lại</button>
+</div>
+<footer>
+<p>Quẻ xăm chỉ mang tính tham khảo, chiêm nghiệm. Mọi sự tại nhân.</p>
+<p>Trang web được lập trình bởi Huỳnh Thiên Phát.</p></footer>
+<script>
+        // --- DỮ LIỆU 100 QUẺ XĂM QUAN THÁNH ---
+        const XAM_DATA = [
+            { id: 1, title: 'Đệ Nhất Thượng Thượng', poem: '開天闢地作良緣\n吉日良時萬物全\n若得此籤非小可\n人行忠正帝王宣', thanh_y: 'Trời đất tạo nên duyên lành. Ngày tốt giờ lành vạn vật đều đủ cả. Xin được quẻ này không phải chuyện nhỏ. Người ăn ở trung chính sẽ được vua ban thưởng.', tich_xua: '鍾離成道 - Chung Ly thành đạo', giai_nghia: 'Mọi việc đều tốt đẹp. Danh lợi đều có. Bệnh tật mau khỏi. Mọi sự đều thành công.' },
+            { id: 2, title: 'Đệ Nhị Hạ Hạ', poem: '夢中得寶醒來無\n自謂南山只是鋤\n若問婚姻并病訟\n別尋條路為相扶', thanh_y: 'Trong mộng thấy được của báu, tỉnh dậy thì không có gì. Tự cho mình là núi Nam Sơn nhưng thực ra chỉ là cái cuốc. Nếu hỏi về hôn nhân, bệnh tật, kiện tụng. Nên tìm con đường khác để giúp đỡ nhau.', tich_xua: '張子房遊赤松 - Trương Tử Phòng theo Xích Tùng Tử', giai_nghia: 'Mọi việc đều hư ảo. Cầu tài không có. Bệnh tật khó khỏi. Hôn nhân không thành. Nên làm việc thiện để cải số.' },
+            { id: 3, title: 'Đệ Tam Trung Bình', poem: '衣食自然生處有\n勸君不用苦勞心\n但能孝悌存忠信\n福祿來成禍不侵', thanh_y: 'Cơm áo tự nhiên sinh ra đã có. Khuyên bạn không cần phải lao tâm khổ tứ. Chỉ cần hiếu thảo, trung tín. Phúc lộc sẽ đến, tai họa không xâm phạm.', tich_xua: '賈誼遇漢文帝 - Giả Nghị gặp Hán Văn Đế', giai_nghia: 'Mọi việc thuận theo tự nhiên. Không nên cưỡng cầu. Giữ gìn đạo đức thì mọi sự sẽ tốt đẹp.' },
+            { id: 4, title: 'Đệ Tứ Hạ Hạ', poem: '去年百事欠相宜\n若較今年時運衰\n好把瓣香告神佛\n莫教福謝悔無追', thanh_y: 'Năm ngoái trăm việc đều không tốt. So với năm nay thời vận lại càng suy. Nên thành tâm cầu khấn thần phật. Đừng để phúc hết mới hối hận thì đã muộn.', tich_xua: '小秦王三跳龍門 - Tiểu Tần Vương ba lần nhảy long môn', giai_nghia: 'Vận xui chưa hết. Cần phải cẩn thận. Nên làm nhiều việc thiện, cầu phúc thì mới mong qua khỏi.' },
+            { id: 5, title: 'Đệ Ngũ Thượng Cát', poem: '子有三年之艾\n祈禱神明祐之\n經商出入皆如意\n無災無禍不須疑', thanh_y: 'Như có được ngải cứu 3 năm (thuốc quý). Cầu nguyện thần minh sẽ được che chở. Kinh doanh, đi lại đều được như ý. Không tai không họa, không cần phải nghi ngờ.', tich_xua: '呂蒙正守困 - Lã Mông Chính lúc hàn vi', giai_nghia: 'Mọi việc đều hanh thông, may mắn. Cầu gì được nấy. Bệnh tật gặp thầy gặp thuốc mau khỏi. Cần phải biết nắm bắt thời cơ.' },
+            { id: 6, title: 'Đệ Lục Trung Bình', poem: '何勞鼓瑟更吹笙\n寸步如登萬里程\n彼此懷疑不相信\n休將私意憶濃情', thanh_y: 'Hà tất phải đàn ca sáo thổi. Một bước đi tựa vạn dặm đường. Đôi bên nghi ngờ không tin tưởng nhau. Thôi đừng đem tình riêng mà nhớ đến nghĩa nồng.', tich_xua: '相如復歸 - Tương Như trở về', giai_nghia: 'Mọi việc đều không chắc chắn. Lòng người hay thay đổi. Không nên tin người thái quá. Giữ mình thì hơn.' },
+            { id: 7, title: 'Đệ Thất Hạ Hạ', poem: '仙人指路路不通\n勸君留意細參詳\n時運不齊胡亂捧\n吉凶禍福與他同', thanh_y: 'Tiên nhân chỉ đường nhưng đường không thông. Khuyên bạn nên lưu ý xem xét kỹ càng. Thời vận không tốt, làm càn làm bừa. Họa phúc may rủi cũng theo đó mà đến.', tich_xua: '呂小姐愛貌뚠뚠 - Lữ tiểu thư yêu người diện mạo xấu xí', giai_nghia: 'Thời vận chưa đến. Mọi việc bế tắc. Cần phải kiên nhẫn chờ đợi. Hành động lúc này sẽ thất bại.' },
+            { id: 8, title: 'Đệ Bát Thượng Cát', poem: '年來豐歉皆天數\n自是今年旱較多\n與子定期三日內\n田疇沾足雨滂沱', thanh_y: 'Mất mùa hay được mùa đều do trời định. Năm nay hạn hán có hơi nhiều. Hẹn với con trong vòng ba ngày. Ruộng đồng sẽ được mưa thuận gió hòa.', tich_xua: '大舜耕歷山 - Đại Thuấn cày núi Lịch Sơn', giai_nghia: 'Sau cơn mưa trời lại sáng. Mọi khó khăn sắp qua. Sẽ có quý nhân phù trợ. Mọi việc sẽ thành công tốt đẹp.' },
+            { id: 9, title: 'Đệ Cửu Thượng Thượng', poem: '望渠消息向長安\n常把菱花仔細看\n見說文書將入境\n今朝喜色上眉端', thanh_y: 'Trông ngóng tin tức từ Trường An. Thường đem gương soi dung nhan. Nghe nói văn thư sắp đến nơi. Hôm nay nét mặt vui mừng hớn hở.', tich_xua: '宋太祖陳橋即位 - Tống Thái Tổ lên ngôi ở Trần Kiều', giai_nghia: 'Sắp có tin vui từ xa. Mọi mong ước đều thành hiện thực. Công danh, tài lộc đều đến. Mọi sự đều viên mãn.' },
+            { id: 10, title: 'Đệ Thập Trung Bình', poem: '病患時時命蹇衰\n何須打瓦共鑽龜\n直教重見一陽後\n始可求神仗佛持', thanh_y: 'Bệnh tật liên miên, mệnh vận trắc trở. Hà tất phải xem bói, cầu cơ. Đợi đến khi qua khỏi cơn nguy. Mới nên cầu thần phật扶持.', tich_xua: '冉伯牛染病 - Nhiễm Bá Ngưu bị bệnh', giai_nghia: 'Bệnh tật khó qua. Mọi việc không thuận. Cần phải tĩnh dưỡng, giữ gìn sức khỏe. Qua được vận hạn này thì mọi sự sẽ tốt.' },
+            { id: 11, title: 'Đệ Thập Nhất Thượng Cát', poem: '喜鵲簷前報好音\n知君千里欲歸心\n繡帷重結鴛鴦帶\n葉落霜凋暮色侵', thanh_y: 'Chim khách báo tin vui trước thềm. Biết người ngàn dặm muốn quay về. Rèm thêu lại kết đôi uyên ương. Lá rụng sương sa chiều buông xuống.', tich_xua: '韓信掛帥 - Hàn Tín làm soái', giai_nghia: 'Sắp có tin vui, người đi xa sắp về. Gia đình đoàn tụ. Mọi việc đều thuận lợi, như ý.' },
+            { id: 12, title: 'Đệ Thập Nhị Trung Bình', poem: '天有時晴地有時\n何必皺眉與苦思\n榮辱升沉皆有定\n由來富貴在天為', thanh_y: 'Trời có lúc nắng có lúc mưa. Hà tất phải chau mày suy nghĩ khổ sở. Vinh nhục, thăng trầm đều có số. Giàu sang phú quý là do trời định.', tich_xua: '蘇武牧羊 - Tô Vũ chăn dê', giai_nghia: 'Mọi việc có số cả. Không nên lo lắng thái quá. Cứ thuận theo tự nhiên, mọi việc sẽ ổn thỏa.' },
+            { id: 13, title: 'Đệ Thập Tam Trung Bình', poem: '君問歸期未有期\n遵渚盤桓Spaceside\n此中寬窄君須記\n守舊安身靜處宜', thanh_y: 'Bạn hỏi ngày về nhưng chưa có hẹn. Quanh quẩn bên bờ sông không đi. Nơi này rộng hẹp bạn nên ghi nhớ. Giữ nếp cũ an thân, ở nơi yên tĩnh là hơn.', tich_xua: '姜女尋夫 - Nàng Khương tìm chồng', giai_nghia: 'Mọi việc chưa có kết quả. Nên an phận thủ thường, không nên thay đổi. Chờ thời cơ tốt hơn.' },
+            { id: 14, title: 'Đệ Thập Tứ Hạ Hạ', poem: '一見佳人便喜歡\n誰知去後有多般\n人情 冷暖君休訝\n曆涉應知行路難', thanh_y: 'Vừa thấy người đẹp liền vui mừng. Ai biết sau khi đi lại có nhiều chuyện. Lòng người nóng lạnh bạn đừng ngạc nhiên. Trải qua rồi mới biết đường đi khó khăn.', tich_xua: '郭華戀王月英 - Quách Hoa yêu Vương Nguyệt Anh', giai_nghia: 'Bề ngoài tốt đẹp nhưng bên trong có nhiều trắc trở. Lòng người khó đoán. Cẩn thận trong các mối quan hệ.' },
+            { id: 15, title: 'Đệ Thập Ngũ Trung Bình', poem: '兩家門戶各相當\n不是姻緣莫較量\n直待春風好消息\n卻調琴瑟向蘭房', thanh_y: 'Hai nhà môn đăng hộ đối. Không phải姻 duyên thì đừng so đo. Đợi đến khi gió xuân mang tin tốt. Mới hòa đàn ca trong phòng lan.', tich_xua: '張君瑞憶鶯鶯 - Trương Quân Thụy nhớ Oanh Oanh', giai_nghia: 'Mọi việc cần có thời cơ. Không nên vội vàng. Chờ đợi tin tốt sẽ đến. Hôn nhân cần xem xét kỹ.' },
+            { id: 16, title: 'Đệ Thập Lục Hạ Hạ', poem: '官事悠悠難辨明\n不如息了且歸耕\n傍人煽惑君休信\n此事當謀親弟兄', thanh_y: 'Việc quan kéo dài khó phân định. Chẳng bằng thôi đi về cày ruộng. Người bên cạnh xúi giục bạn đừng tin. Việc này nên bàn bạc với anh em ruột thịt.', tich_xua: '王祥臥冰 - Vương Tường nằm trên băng', giai_nghia: 'Kiện tụng khó khăn. Nên hòa giải thì hơn. Đừng tin lời người ngoài. Nên tin tưởng người thân trong gia đình.' },
+            { id: 17, title: 'Đệ Thập Thất Trung Bình', poem: '田園價貫好商量\n事到公庭彼此傷\n縱使機關圖得勝\n定為後世子孫殃', thanh_y: 'Ruộng vườn giá cả nên thương lượng. Việc đến công đường đôi bên đều thiệt hại. Dù cho mưu mẹo có thắng được. Chắc chắn sẽ là tai họa cho con cháu đời sau.', tich_xua: '石崇被害 - Thạch Sùng bị hại', giai_nghia: 'Nên dĩ hòa vi quý. Tranh chấp kiện tụng sẽ mang lại hậu quả xấu. Nhường một bước trời cao biển rộng.' },
+            { id: 18, title: 'Đệ Thập Bát Thượng Cát', poem: '金烏西墜兔東臨\n日夜循環亙古今\n僧道得知無不利\n士農工商各從心', thanh_y: 'Mặt trời lặn phía tây, mặt trăng lên phía đông. Ngày đêm xoay vần từ xưa đến nay. Người tu hành biết được điều này thì không gì bất lợi. Sĩ, nông, công, thương đều được toại lòng.', tich_xua: '孟嘗君雞鳴度關 - Mạnh Thường Quân nhờ tiếng gà gáy mà qua ải', giai_nghia: 'Mọi việc đều theo quy luật tự nhiên. Nắm được quy luật sẽ thành công. Mọi người, mọi ngành nghề đều được thuận lợi.' },
+            { id: 19, title: 'Đệ Thập Cửu Trung Bình', poem: '嗟子從來未得時\n今年星運頗相宜\n營求動作都如意\n和合婚姻誕貴兒', thanh_y: 'Than ôi bạn từ trước đến nay chưa gặp thời. Năm nay vận sao khá tốt. Mưu cầu, làm việc đều được như ý. Hôn nhân hòa hợp sinh con quý.', tich_xua: '劉智遠得岳氏 - Lưu Trí Viễn được Nhạc thị', giai_nghia: 'Thời vận đã đến. Mọi việc bắt đầu thuận lợi. Cần nắm bắt cơ hội. Hôn nhân tốt đẹp, gia đình hạnh phúc.' },
+            { id: 20, title: 'Đệ Nhị Thập Hạ Hạ', poem: '一生心事向誰論\n十八灘頭說與君\n世事盡從流水去\n功名富貴等浮雲', thanh_y: 'Tâm sự cả đời biết nói cùng ai. Đến bến thứ mười tám mới nói cho bạn hay. Việc đời đều trôi theo dòng nước. Công danh phú quý như mây nổi.', tich_xua: '嚴子陵登釣臺 - Nghiêm Tử Lăng lên đài câu cá', giai_nghia: 'Mọi sự không thành. Công danh phú quý là hư ảo. Nên lui về ở ẩn, sống cuộc đời thanh thản.' },
+            { id: 21, title: 'Đệ Nhị Thập Nhất Thượng Cát', poem: '陰陽道合總由天\n女嫁男婚豈偶然\n但看龍蛇堪運動\n熊羆叶夢喜團圓', thanh_y: 'Âm dương hòa hợp đều do trời. Gái lấy chồng, trai lấy vợ đâu phải ngẫu nhiên. Chỉ xem rồng rắn có thể lay động. Mộng thấy gấu бурау là điềm vui đoàn viên.', tich_xua: '邵康節定陰陽 - Thiệu Khang Tiết định âm dương', giai_nghia: 'Hôn nhân là do duyên trời định. Mọi sự hòa hợp, tốt đẹp. Gia đình đoàn tụ, hạnh phúc.' },
+            { id: 22, title: 'Đệ Nhị Thập Nhị Hạ Hạ', poem: '四郊田畝皆枯竭\n久旱俄然三日霖\n花果草芽俱潤澤\n始知一雨值千金', thanh_y: 'Ruộng đồng bốn bề đều khô cạn. Hạn hán đã lâu bỗng nhiên mưa ba ngày. Hoa quả, cỏ cây đều được tươi tốt. Mới biết một trận mưa đáng giá ngàn vàng.', tich_xua: '王孝先為民祈禱 - Vương Hiếu Tiên vì dân cầu đảo', giai_nghia: 'Sau cơn khốn khó sẽ đến hồi thái lai. Cần kiên trì, không nản lòng. Sẽ có kết quả tốt đẹp.' },
+            { id: 23, title: 'Đệ Nhị Thập Tam Hạ Hạ', poem: '花開花謝在春風\n貴賤窮通百事空\n羨子榮華今已矣\n不如ANTECEDENTS尋蹤', thanh_y: 'Hoa nở hoa tàn là do gió xuân. Sang hèn, nghèo giàu trăm việc đều là không. Ngưỡng mộ vinh hoa của bạn nay đã hết. Chẳng bằng đi tìm dấu vết tổ tiên.', tich_xua: '吳王愛西施 - Ngô Vương yêu Tây Thi', giai_nghia: 'Vinh hoa phú quý chỉ là tạm thời. Mọi sự rồi cũng sẽ qua. Không nên quá đam mê danh lợi.' },
+            { id: 24, title: 'Đệ Nhị Thập Tứ Trung Bình', poem: '一春萬事苦憂煎\n夏裏營求始帖然\n更遇秋成冬至後\n恰如騎鶴與腰纏', thanh_y: 'Một mùa xuân vạn việc đều lo lắng. Mùa hè mưu cầu mới bắt đầu yên ổn. Lại gặp mùa thu thành công, mùa đông đến sau. Giống như cưỡi hạc và lưng đeo tiền.', tich_xua: '張騫誤入斗牛宮 - Trương Khiên lầm vào cung Đẩu Ngưu', giai_nghia: 'Mọi việc ban đầu khó khăn, sau sẽ thuận lợi. Cần phải kiên nhẫn. Thành công sẽ đến vào cuối năm.' },
+            { id: 25, title: 'Đệ Nhị Thập Ngũ Thượng Cát', poem: '過了憂危第幾重\n從今再歷永無凶\n寬心自有寬心計\n得遇高人護聖功', thanh_y: 'Đã qua bao nhiêu lần lo lắng nguy hiểm. Từ nay về sau sẽ không còn tai họa. Lòng rộng rãi tự có kế sách rộng rãi. Gặp được cao nhân扶持 thành công.', tich_xua: '唐明皇擊鼓催花 - Đường Minh Hoàng đánh trống giục hoa nở', giai_nghia: 'Mọi tai họa đã qua. Từ nay về sau mọi việc đều thuận lợi. Sẽ có quý nhân giúp đỡ. Thành công to lớn.' },
+            { id: 26, title: 'Đệ Nhị Thập Lục Trung Bình', poem: '一天星斗燦輝煌\n風雨雷霆動四方\n何事妖魔敢侵犯\n神仙隊仗審馨香', thanh_y: 'Một trời sao lấp lánh sáng ngời. Gió mưa sấm chớp động bốn phương. Cớ sao yêu ma dám xâm phạm. Đội quân thần tiên xem xét hương thơm.', tich_xua: '范少伯泛舟五湖 - Phạm Thiếu Bá đi thuyền trên Ngũ Hồ', giai_nghia: 'Mọi việc đều có thần linh che chở. Kẻ xấu không thể làm hại. Mọi sự đều bình an.' },
+            { id: 27, title: 'Đệ Nhị Thập Thất Hạ Hạ', poem: '一山還比一山高\n世事紛紛紙一張\n回首故鄉千萬里\n勞心費力是尋常', thanh_y: 'Núi này còn cao hơn núi khác. Việc đời rối ren như một tờ giấy. Quay đầu nhìn lại quê hương vạn dặm. Lao tâm khổ tứ là chuyện thường tình.', tich_xua: '江東得道 - Giang Đông đắc đạo', giai_nghia: 'Mọi việc còn nhiều khó khăn, thử thách. Không nên tự mãn. Cần phải nỗ lực nhiều hơn nữa.' },
+            { id: 28, title: 'Đệ Nhị Thập Bát Thượng Cát', poem: '公侯將相本無種\n好把勤勞契上天\n人事盡從天理見\n才高豈得困林泉', thanh_y: 'Công hầu, tướng tướng vốn không có dòng dõi. Nên đem sự cần cù để hợp với ý trời. Việc người đều thuận theo lẽ trời. Tài cao sao có thể chịu cảnh khốn cùng nơi rừng suối.', tich_xua: '李後主這樣渡長江 - Lý Hậu Chủ vượt sông Trường Giang như vậy', giai_nghia: 'Chỉ cần nỗ lực, cố gắng thì sẽ thành công. Không phân biệt sang hèn. Tài năng sẽ được trọng dụng.' },
+            { id: 29, title: 'Đệ Nhị Thập Cửu Thượng Thượng', poem: '寶劍出匣耀光明\n在匣全然不惹塵\n今得貴人頻指示\n如錦上添花再勵新', thanh_y: 'Gươm báu ra khỏi vỏ sáng ngời. Ở trong vỏ hoàn toàn không dính bụi. Nay được quý nhân thường xuyên chỉ bảo. Như gấm thêm hoa, lại càng tươi đẹp.', tich_xua: '趙子龍救阿斗 - Triệu Tử Long cứu A Đẩu', giai_nghia: 'Tài năng sắp được thể hiện. Có quý nhân giúp đỡ. Mọi việc đều thành công rực rỡ. Như hổ thêm cánh.' },
+            { id: 30, title: 'Đệ Tam Thập Hạ Hạ', poem: '勞心汨沒竟何歸\n疾病兼纏雙鬢絲\n木馬與犬皆不濟\n星沉月落雨淋漓', thanh_y: 'Lao tâm khổ tứ cuối cùng về đâu. Bệnh tật quấn thân tóc đã hoa râm. Ngựa gỗ và chó đều không giúp được gì. Sao lặn trăng chìm mưa rơi tầm tã.', tich_xua: '楚懷王入秦武關 - Sở Hoài Vương vào cửa ải Võ Quan của Tần', giai_nghia: 'Mọi việc đều thất bại. Bệnh tật nặng. Gặp nhiều tai họa. Cần phải cẩn thận mọi bề.' },
+            { id: 31, title: 'Đệ Tam Thập Nhất Trung Bình', poem: '秋冬作事只尋常\n春到門庭漸吉昌\n千里信音符遠望\n萱堂快樂未渠央', thanh_y: 'Mùa đông mùa thu làm việc chỉ bình thường. Mùa xuân đến nhà dần dần tốt đẹp. Tin tức ngàn dặm phù hợp với mong đợi xa. Mẹ già vui vẻ chưa hề vơi.', tich_xua: '佛印會東坡 - Phật Ấn gặp Đông Pha', giai_nghia: 'Mọi việc sẽ tốt dần lên. Tin vui sẽ đến. Gia đình hạnh phúc, bình an.' },
+            { id: 32, title: 'Đệ Tam Thập Nhị Thượng Cát', poem: '海闊天空調玉鉤\n煙波萬里一扁舟\n自今得此逍遙相\n誰說人間有舊愁', thanh_y: 'Biển rộng trời cao treo móc ngọc. Khói sóng vạn dặm một chiếc thuyền con. Từ nay được tướng tiêu dao này. Ai nói nhân gian có sầu muộn cũ.', tich_xua: '劉備入贅孫權妹 - Lưu Bị làm rể em gái Tôn Quyền', giai_nghia: 'Mọi việc đều hanh thông, tự tại. Không còn lo phiền. Cuộc sống an nhàn, vui vẻ.' },
+            { id: 33, title: 'Đệ Tam Thập Tam Hạ Hạ', poem: '天邊消息實難思\n切莫多心望強為\n若把石頭磨作鏡\n精神枉費一時痴', thanh_y: 'Tin tức cuối trời thật khó nghĩ. Chớ nên đa tâm mong làm càn. Nếu đem đá mài thành gương. Tinh thần uổng phí, một lúc ngu si.', tich_xua: '莊子破棺 - Trang Tử phá quan tài', giai_nghia: 'Mọi việc đều không có hy vọng. Không nên cố chấp. Làm việc vô ích chỉ tốn công vô ích.' },
+            { id: 34, title: 'Đệ Tam Thập Tứ Trung Bình', poem: '春夏纔過秋又冬\n紛紛謀慮攪心胸\n貴人垂手來相援\n休把私心情意濃', thanh_y: 'Xuân hạ vừa qua thu lại đông. Bàn tính rối ren khuấy động lòng. Quý nhân ra tay đến giúp đỡ. Thôi đừng đem tình riêng ý nặng.', tich_xua: '蕭何追韓信 - Tiêu Hà đuổi theo Hàn Tín', giai_nghia: 'Lo lắng nhiều nhưng sẽ có quý nhân giúp đỡ. Mọi việc sẽ được giải quyết. Không nên quá đa sầu đa cảm.' },
+            { id: 35, title: 'Đệ Tam Thập Ngũ Thượng Cát', poem: '一鋤掘地要求泉\n努力求之得最先\n無意俄然遇知己\n相逢攜手上青天', thanh_y: 'Một cuốc đào đất mong tìm suối. Nỗ lực tìm kiếm sẽ được trước tiên. Bất ngờ gặp được tri kỷ. Gặp nhau dắt tay lên trời xanh.', tich_xua: '王曾禱天 - Vương Tằng cầu trời', giai_nghia: 'Nỗ lực sẽ được đền đáp. Sẽ có người tốt giúp đỡ. Mọi việc thành công ngoài mong đợi.' },
+            { id: 36, title: 'Đệ Tam Thập Lục Trung Bình', poem: '眼前病訟不須憂\n寶地資財盡可求\n恰似猿猴脫金鎖\n自歸山洞去來悠', thanh_y: 'Bệnh tật, kiện tụng trước mắt không cần lo. Đất quý của cải đều có thể cầu. Giống như vượn khỉ thoát khỏi xích vàng. Tự về hang núi đi lại thong dong.', tich_xua: '羅隱求官 - La Ẩn cầu quan', giai_nghia: 'Mọi khó khăn sẽ qua. Sẽ được tự do, tự tại. Tài lộc sẽ đến.' },
+            { id: 37, title: 'Đệ Tam Thập Thất Hạ Hạ', poem: '焚香禱告何紛紜\nやおkomeめしき事不聞\n病者脩禳重大手術\n訟官有理談不屈', thanh_y: 'Đốt hương cầu nguyện sao rối ren. Việc nhỏ nhặt không nghe thấy. Người bệnh cầu khấn nhưng bệnh nặng. Kiện tụng có lý nhưng nói không ai nghe.', tich_xua: '邵堯夫祝香 - Thiệu Nghiêu Phu đốt hương cầu nguyện', giai_nghia: 'Mọi việc đều không thuận lợi. Cầu nguyện không linh ứng. Cần phải tự mình nỗ lực.' },
+            { id: 38, title: 'Đệ Tam Thập Bát Trung Bình', poem: '月照天書靜處期\n忽遭雲霧又昏迷\n寬心祈待雲霞散\nAMSUNG再團圓未可知', thanh_y: 'Trăng soi sách trời ở nơi yên tĩnh. Bỗng gặp mây mù lại hôn mê. Lòng rộng rãi cầu mong chờ mây tan. SAMSUNG đoàn tụ lại chưa biết thế nào.', tich_xua: '何文秀遇難 - Hà Văn Tú gặp nạn', giai_nghia: 'Mọi việc đang tốt đẹp bỗng gặp trắc trở. Cần phải kiên nhẫn chờ đợi. Tương lai chưa rõ ràng.' },
+            { id: 39, title: 'Đệ Tam Thập Cửu Thượng Cát', poem: '天門一掛榜\n預定奪標人\n馬嘶芳草地\n秋高聽鹿鳴', thanh_y: 'Cửa trời treo một cái bảng. Đã định trước người đoạt giải. Ngựa hí trên cỏ thơm. Thu cao nghe hươu kêu.', tich_xua: '姜維鄧艾鬥陣 - Khương Duy và Đặng Ngải đấu trận', giai_nghia: 'Công danh đã được định sẵn. Sắp có tin vui. Mọi việc thành công tốt đẹp.' },
+            { id: 40, title: 'Đệ Tứ Thập Trung Bình', poem: '新來換得好規模\n何用隨他步與趨\n只聽耳邊消息到\n崎嶇歷盡見亨衢', thanh_y: 'Mới đến thay đổi được quy mô tốt. Hà tất phải đi theo bước chân người khác. Chỉ nghe tin tức bên tai đến. Trải qua hết gập ghềnh sẽ thấy đường lớn.', tich_xua: '漢光武看 хора - Hán Quang Vũ xem ngựa', giai_nghia: 'Nên đi theo con đường của riêng mình. Không nên bắt chước người khác. Sau khi vượt qua khó khăn sẽ thành công.' },
+            { id: 41, title: 'Đệ Tứ Thập Nhất Thượng Cát', poem: '自南自北自東西\n欲到天涯誰作梯\n遇鼠逢牛三弄笛\n好將名姓榜頭題', thanh_y: 'Từ nam, từ bắc, từ đông, từ tây. Muốn đến tận chân trời ai làm thang. Gặp chuột gặp trâu ba lần thổi sáo. Đem tên họ đề lên đầu bảng.', tich_xua: '劉文龍求官 - Lưu Văn Long cầu quan', giai_nghia: 'Sẽ có quý nhân giúp đỡ. Công danh hiển hách. Mọi việc đều thành công.' },
+            { id: 42, title: 'Đệ Tứ Thập Nhị Trung Bình', poem: '隱中顯\n顯中微\n個中事\n實難為', thanh_y: 'Trong cái ẩn có cái hiện. Trong cái hiện có cái vi tế. Việc trong đó. Thật khó làm.', tich_xua: '目蓮救母 - Mục Liên cứu mẹ', giai_nghia: 'Mọi việc đều phức tạp, khó khăn. Cần phải suy xét kỹ càng. Không nên hành động vội vàng.' },
+            { id: 43, title: 'Đệ Tứ Thập Tam Hạ Hạ', poem: '天有不測風雲\n人有旦夕禍福\n朝夕焚香禱告\n神明鑒格錫福', thanh_y: 'Trời có gió mây bất trắc. Người có họa phúc sớm tối. Sớm tối đốt hương cầu nguyện. Thần minh chứng giám ban phúc.', tich_xua: '玄奘取經 - Huyền Trang đi lấy kinh', giai_nghia: 'Cuộc sống có nhiều biến đổi. Cần phải cẩn thận. Nên thành tâm cầu nguyện để được che chở.' },
+            { id: 44, title: 'Đệ Tứ Thập Tứ Trung Bình', poem: '汝是人中最吉人\n誤為誤作損精神\n堅牢一念酬香願\n富貴榮華萃汝身', thanh_y: 'Bạn là người may mắn nhất trong mọi người. Lầm lỡ làm tổn hại tinh thần. Giữ vững một lòng tin để đáp lại lời nguyện hương khói. Phú quý vinh hoa sẽ tập trung vào bạn.', tich_xua: '王莽篡漢 - Vương Mãng cướp ngôi nhà Hán', giai_nghia: 'Bạn vốn có số tốt nhưng do sai lầm mà gặp khó khăn. Chỉ cần giữ vững lòng tin, làm việc thiện thì sẽ lấy lại được phú quý.' },
+            { id: 45, title: 'Đệ Tứ Thập Ngũ Thượng Cát', poem: '花開正值春\n花落又逢春\n借問桃源路\n重來景色新', thanh_y: 'Hoa nở đúng vào mùa xuân. Hoa rụng lại gặp mùa xuân. Xin hỏi đường đến suối đào. Trở lại lần nữa cảnh sắc mới.', tich_xua: '高祖遇丁公 - Cao Tổ gặp Đinh Công', giai_nghia: 'Mọi việc đều có cơ hội làm lại. Sẽ có kết quả tốt đẹp hơn. Không nên nản lòng.' },
+            { id: 46, title: 'Đệ Tứ Thập Lục Trung Bình', poem: '君是山中萬戶侯\n信知騎馬勝騎牛\n今朝馬上看山色\n爭似騎牛得自由', thanh_y: 'Bạn là vạn hộ hầu trong núi. Tin rằng cưỡi ngựa hơn cưỡi trâu. Sáng nay trên ngựa ngắm cảnh núi. Sao bằng cưỡi trâu được tự do.', tich_xua: '韓信戰霸王 - Hàn Tín đánh Báo Vương', giai_nghia: 'Địa vị cao nhưng không bằng cuộc sống tự do, tự tại. Nên biết đủ thì sẽ hạnh phúc.' },
+            { id: 47, title: 'Đệ Tứ Thập Thất Thượng Cát', poem: '與君萬語復千言\n祗欲平和雪爾冤\n訟則終凶君記取\n試於清夜把天觀', thanh_y: 'Cùng bạn nói vạn lời lại ngàn lời. Chỉ muốn hòa bình giải oan cho bạn. Kiện tụng cuối cùng sẽ xấu bạn nên ghi nhớ. Hãy thử vào đêm thanh vắng mà ngắm trời.', tich_xua: '梁灝登科 - Lương Hạo đỗ đạt', giai_nghia: 'Nên giải quyết mọi việc bằng hòa bình. Kiện tụng sẽ mang lại kết quả xấu. Mọi oan ức sẽ được giải tỏa.' },
+            { id: 48, title: 'Đệ Tứ Thập Bát Trung Bình', poem: '登山涉水正天寒\n兄弟姻親那得安\n幸遇虎頭人一喚\n全家誰保汝平安', thanh_y: 'Leo núi lội sông trời đang lạnh. Anh em họ hàng sao được yên. May gặp người đầu hổ gọi một tiếng. Cả nhà ai giữ cho bạn được bình an.', tich_xua: '陳萬年再合 - Trần Vạn Niên tái hợp', giai_nghia: 'Gặp nhiều khó khăn, nguy hiểm. Sẽ có quý nhân giúp đỡ qua khỏi. Gia đình sẽ được bình an.' },
+            { id: 49, title: 'Đệ Tứ Thập Cửu Hạ Hạ', poem: '彼此家居只一山\n如何似隔鬼門關\n日月如梭人易老\n許多勞碌不如閒', thanh_y: 'Nhà cửa đôi bên chỉ cách một ngọn núi. Sao lại như cách cửa quỷ môn. Ngày tháng như thoi đưa người dễ già. Bao nhiêu lao碌 chẳng bằng nhàn rỗi.', tich_xua: '張子房遁跡 - Trương Tử Phòng ẩn mình', giai_nghia: 'Gần nhau mà như xa cách. Cuộc sống ngắn ngủi, không nên quá lao碌. Nên sống cuộc đời an nhàn.' },
+            { id: 50, title: 'Đệ Ngũ Thập Trung Bình', poem: '人說今年勝舊年\n也須步多要周旋\n一家和氣多生福\n萋菲讒言莫聽偏', thanh_y: 'Người ta nói năm nay hơn năm cũ. Cũng cần phải đi nhiều, giao du nhiều. Một nhà hòa khí sinh nhiều phúc. Lời gièm pha chớ nên nghe theo.', tich_xua: '蘇東坡被貶 - Tô Đông Pha bị giáng chức', giai_nghia: 'Năm nay sẽ tốt hơn năm ngoái. Cần phải giao tiếp nhiều hơn. Gia đình hòa thuận sẽ có nhiều phúc. Đừng tin lời gièm pha.' },
+            { id: 51, title: 'Đệ Ngũ Thập Nhất Trung Bình', poem: '君今百事且隨緣\n水到渠成聽自然\n莫嘆年來不如意\n喜逢新運稱心田', thanh_y: 'Bạn nay trăm việc cứ thuận theo duyên. Nước đến mương thành cứ để tự nhiên. Đừng than năm nay không như ý. Vui gặp vận mới vừa lòng.', tich_xua: '御溝流紅葉 - Lá đỏ trôi trong ngòi nước của cung vua', giai_nghia: 'Mọi việc cứ để tự nhiên. Thời cơ đến sẽ thành công. Sắp có vận mới tốt đẹp.' },
+            { id: 52, title: 'Đệ Ngũ Thập Nhị Thượng Cát', poem: '兀兀塵勞久待時\nเงาพระจันทร์ตกน้ำทอง\n及時撈取帳中', thanh_y: 'Vất vả trong cõi trần đã lâu chờ thời. Bóng trăng rơi xuống nước vàng. Kịp thời vớt lấy trong màn.', tich_xua: '太白醉撈月 - Lý Bạch say rượu vớt trăng', giai_nghia: 'Chờ đợi đã lâu, thời cơ đã đến. Cần phải nắm bắt ngay. Sẽ có thành công lớn.' },
+            { id: 53, title: 'Đệ Ngũ Thập Tam Hạ Hạ', poem: '艱難險阻路蹊蹺\n南鳥孤飛依北巢\n今日貴人曾識面\n相逢卻在夏秋交', thanh_y: 'Đường đi gian nan hiểm trở, kỳ quặc. Chim nam bay một mình nương náu tổ bắc. Hôm nay đã từng gặp mặt quý nhân. Gặp lại nhau lại vào lúc giao mùa hạ thu.', tich_xua: '劉玄德入贅孫權妹 - Lưu Huyền Đức làm rể em gái Tôn Quyền', giai_nghia: 'Gặp nhiều khó khăn, trắc trở. Sẽ có quý nhân giúp đỡ. Thời cơ sẽ đến vào mùa hạ hoặc mùa thu.' },
+            { id: 54, title: 'Đệ Ngũ Thập Tứ Trung Bình', poem: '萬人叢裏逞英豪\n便欲飛騰霄漢高\n爭奈承流風未便\n青燈黃卷且勤勞', thanh_y: 'Trong đám đông vạn người tỏ rõ anh hào. Liền muốn bay vút lên tận trời cao. Nhưng tiếc là gió chưa thuận. Đèn xanh sách vàng cứ chăm chỉ.', tich_xua: '馬超追曹 - Mã Siêu đuổi theo Tào Tháo', giai_nghia: 'Tài năng hơn người nhưng chưa gặp thời. Cần phải kiên nhẫn học hỏi, chờ đợi. Thời cơ sẽ đến.' },
+            { id: 55, title: 'Đệ Ngũ Thập Ngũ Trung Bình', poem: '一朵曇花現\n人心皆稱羡\n芬芳不久長\n拿取甚為便', thanh_y: 'Một đóa hoa ưu đàm hiện ra. Lòng người đều khen ngợi. Hương thơm không được lâu. Lấy đi rất tiện.', tich_xua: '郭曖尚公主 - Quách Ái lấy công chúa', giai_nghia: 'Cơ hội tốt đến bất ngờ nhưng không kéo dài. Cần phải nắm bắt ngay. Mọi việc sẽ thuận lợi.' },
+            { id: 56, title: 'Đệ Ngũ Thập Lục Thượng Cát', poem: '灘小石溪流水響\n風清月白貴人忙\n路須借問何方去\n管取林中花草香', thanh_y: 'Bãi cạn, suối đá, nước chảy róc rách. Gió mát, trăng sáng, quý nhân bận rộn. Đường cần phải hỏi đi về đâu. Chắc chắn trong rừng hoa cỏ thơm.', tich_xua: '範少伯辭官 - Phạm Thiếu Bá từ quan', giai_nghia: 'Cảnh đẹp, thời cơ tốt. Sẽ có người chỉ lối. Mọi việc sẽ thành công, kết quả tốt đẹp.' },
+            { id: 57, title: 'Đệ Ngũ Thập Thất Trung Bình', poem: '事端百出慮雖長\n莫聽人言自主張\n一著仙機君記取\n紛紛鬧裏更思量', thanh_y: 'Việc xảy ra trăm mối lo tuy dài. Đừng nghe lời người khác, tự mình quyết định. Một nước cờ tiên bạn nên ghi nhớ. Trong lúc rối ren càng nên suy nghĩ.', tich_xua: '爛柯觀棋 - Xem cờ ở núi Lạn Kha', giai_nghia: 'Gặp nhiều chuyện phiền phức. Cần phải có chính kiến, không nên nghe lời người khác. Suy nghĩ kỹ trước khi hành động.' },
+            { id: 58, title: 'Đệ Ngũ Thập Bát Trung Bình', poem: '忠言逆耳君須記\n莫怪他人說短長\n我illée再三細囑咐\n恐君錯路要商量', thanh_y: 'Lời thật khó nghe bạn nên ghi nhớ. Đừng trách người khác nói này nói nọ. Tôi đã dặn dò kỹ lưỡng nhiều lần. Sợ bạn đi sai đường nên cần phải bàn bạc.', tich_xua: '蘇秦背劍 - Tô Tần đeo gươm', giai_nghia: 'Nên lắng nghe lời khuyên của người khác. Cẩn thận trong hành động. Bàn bạc kỹ trước khi quyết định.' },
+            { id: 59, title: 'Đệ Ngũ Thập Cửu Thượng Cát', poem: '門戶優勢舊歡娛\nいまなおระลึกถึงกัน\n及時雨露มาช่วย\n花の木が再び芳しい', thanh_y: 'Cửa nhà ưu thế, niềm vui cũ. Bây giờ vẫn còn nhớ đến nhau. Mưa móc kịp thời đến giúp. Cây hoa lại thơm ngát.', tich_xua: '鄧伯道無兒 - Đặng Bá Đạo không có con', giai_nghia: 'Mọi việc sẽ tốt đẹp trở lại. Sẽ có sự giúp đỡ kịp thời. Tình cảm cũ sẽ được nối lại.' },
+            { id: 60, title: 'Đệ Lục Thập Hạ Hạ', poem: '抱薪救火火愈熾\n揚湯止沸沸不騰\n莫聽人言尋宿憾\n緩尋條路自安寧', thanh_y: 'Ôm củi chữa cháy lửa càng cháy to. Múc nước sôi đổ vào để ngừng sôi thì nước vẫn sôi. Đừng nghe lời người khác tìm mối hận cũ. Từ từ tìm con đường khác sẽ được an ninh.', tich_xua: '項羽困垓下 - Hạng Vũ bị vây ở Cai Hạ', giai_nghia: 'Cách làm sai sẽ khiến mọi việc tồi tệ hơn. Không nên nghe lời xúi giục. Cần tìm cách giải quyết khác, bình tĩnh xử lý.' },
+            { id: 61, title: 'Đệ Lục Thập Nhất Trung Bình', poem: '嘯聚山林兇惡儔\n善良無事苦煎憂\n主人大笑出門去\n不用干戈盜賊休', thanh_y: 'Tụ tập ở núi rừng một đám hung ác. Người lương thiện không có việc gì mà phải lo lắng. Chủ nhân cười lớn đi ra ngoài. Không cần dùng đến vũ khí, bọn trộm cướp cũng phải dừng lại.', tich_xua: '馮煖客孟嘗君 - Phùng Noãn làm khách của Mạnh Thường Quân', giai_nghia: 'Có kẻ xấu quấy phá nhưng không đáng lo. Sẽ có người ra tay dẹp yên. Mọi việc sẽ được giải quyết ổn thỏa.' },
+            { id: 62, title: 'Đệ Lục Thập Nhị Thượng Cát', poem: '吉人天相更神扶\n到處皆同寶藏珠\n若問此中端的意\n田園財物庫藏餘', thanh_y: 'Người hiền được trời giúp, lại có thần扶持. Đến đâu cũng như có ngọc ngà châu báu. Nếu hỏi ý nghĩa thực sự trong đó. Ruộng vườn, của cải, kho tàng dư dả.', tich_xua: '韓信得志 - Hàn Tín được thỏa chí', giai_nghia: 'Mọi việc đều có quý nhân, thần linh giúp đỡ. Đi đâu cũng gặp may mắn. Tài lộc dồi dào, mọi sự thành công.' },
+            { id: 63, title: 'Đệ Lục Thập Tam Hạ Hạ', poem: '昔日螳螂去捕蟬\n豈知黃雀在後邊\n漁翁見利隨他後\n鷸蚌相持獲利全', thanh_y: 'Ngày xưa bọ ngựa đi bắt ve. Đâu biết chim sẻ vàng ở phía sau. Ông chài thấy lợi đi theo sau. Trai cò tranh nhau, ngư ông đắc lợi hoàn toàn.', tich_xua: '魯肅索荊州 - Lỗ Túc đòi Kinh Châu', giai_nghia: 'Cẩn thận có người khác rình rập sau lưng. Tranh giành lẫn nhau chỉ khiến người khác được lợi. Nên cẩn thận, đề phòng.' },
+            { id: 64, title: 'Đệ Lục Thập Tứ Trung Bình', poem: '隨分耕耘隨分收\n無須苦苦外邊求\n專心管好自家事\n待得時來萬事周', thanh_y: 'Tùy theo công sức cày cấy mà thu hoạch. Không cần phải khổ sở cầu cạnh bên ngoài. Chuyên tâm lo tốt việc nhà mình. Đợi đến khi thời cơ đến thì vạn sự đều tốt đẹp.', tich_xua: '管鮑分金 - Quản Trọng và Bảo Thúc Nha chia vàng', giai_nghia: 'Làm bao nhiêu hưởng bấy nhiêu. Không nên tham lam. Lo tốt việc của mình trước. Thời cơ đến thì mọi việc sẽ thành công.' },
+            { id: 65, title: 'Đệ Lục Thập Ngũ Hạ Hạ', poem: '入山不到山\n做惡不到惡\n두 사람이 마음을 같이하니\n黃土變成金', thanh_y: 'Vào núi mà không đến núi. Làm ác mà không đến nơi ác. Hai người đồng lòng. Đất vàng biến thành vàng.', tich_xua: '越王復國 - Việt Vương phục quốc', giai_nghia: 'Mọi việc tưởng như không thể nhưng nếu đồng lòng thì sẽ thành công. Cần có sự hợp tác, đoàn kết.' },
+            { id: 66, title: 'Đệ Lục Thập Lục Trung Bình', poem: '不如人處聽升沉\n安分守己任浮沉\n只聽高山流水調\n靜中見得本來心', thanh_y: 'Ở nơi không bằng người khác thì nghe chuyện thăng trầm. An phận thủ thường mặc cho số phận. Chỉ nghe điệu nhạc cao sơn lưu thủy. Trong yên tĩnh thấy được lòng mình.', tich_xua: '杜甫遊春 - Đỗ Phủ đi chơi xuân', giai_nghia: 'Nên an phận thủ thường. Không nên bon chen. Tìm sự thanh thản trong tâm hồn.' },
+            { id: 67, title: 'Đệ Lục Thập Thất Thượng Cát', poem: '謝天謝地謝神明\n虧我虧心虧何靈\n天理昭彰須照應\n善人善報永無停', thanh_y: 'Tạ trời, tạ đất, tạ thần minh. Thiệt thòi cho tôi, thiệt thòi cho lòng tôi, thiệt thòi cho linh hồn nào. Lẽ trời sáng tỏ cần phải ứng nghiệm. Người hiền được báo đáp tốt không bao giờ dừng lại.', tich_xua: '金精試竇兒 - Kim Tinh thử Đậu Nhi', giai_nghia: 'Ở hiền gặp lành. Mọi việc làm tốt sẽ được đền đáp. Không cần phải lo lắng.' },
+            { id: 68, title: 'Đệ Lục Thập Bát Trung Bình', poem: '汝是胸中幾度秋\n何須心事亂如麻\n快刀斬斷絲頭亂\n直上青雲登九霄', thanh_y: 'Bạn trong lòng đã có mấy mùa thu. Hà tất phải tâm sự rối như tơ vò. Dao sắc cắt đứt mối tơ rối. Lên thẳng mây xanh đến chín tầng trời.', tich_xua: '錢大王販鹽 - Tiền Đại Vương buôn muối', giai_nghia: 'Nên quyết đoán giải quyết mọi chuyện. Không nên do dự. Sẽ có thành công lớn.' },
+            { id: 69, title: 'Đệ Lục Thập Cửu Hạ Hạ', poem: '一條金線秤君心\n無減無增無重輕\n為人平生心正直\n文章全具藝光明', thanh_y: 'Một sợi chỉ vàng cân lòng bạn. Không giảm không tăng không nặng không nhẹ. Con người cả đời lòng dạ thẳng ngay. Văn chương đầy đủ, nghệ thuật sáng ngời.', tich_xua: '孫龐鬥智 - Tôn Tẫn và Bàng Quyên đấu trí', giai_nghia: 'Cần phải giữ lòng dạ công bằng, chính trực. Mọi việc sẽ được đánh giá đúng. Tài năng sẽ được công nhận.' },
+            { id: 70, title: 'Đệ Thất Thập Trung Bình', poem: '雷雨風雲各有司\n至誠禱告莫生疑\n與君定下福田計\n祿位名揚坤得宜', thanh_y: 'Sấm mưa gió mây đều có người cai quản. Thành tâm cầu nguyện chớ nên nghi ngờ. Cùng bạn định ra kế hoạch ruộng phúc. Lộc vị danh tiếng vang lừng, đất đai thích hợp.', tich_xua: '李靖歸山 - Lý Tịnh về núi', giai_nghia: 'Mọi việc đều có sự sắp đặt. Cứ thành tâm cầu nguyện sẽ được linh ứng. Công danh, tài lộc đều sẽ đến.' },
+            { id: 71, title: 'Đệ Thất Thập Nhất Trung Bình', poem: '喜氣番番送入宮\n天邊佳信來無窮\n眼前諸事皆稱意\n向後經營總不同', thanh_y: 'Khí vui dồn dập đưa vào cung. Tin tốt cuối trời đến vô cùng. Mọi việc trước mắt đều vừa ý. Sau này kinh doanh hoàn toàn khác.', tich_xua: '蘇武還鄉 - Tô Vũ trở về quê hương', giai_nghia: 'Tin vui tới tấp. Mọi việc đều thuận lợi. Tương lai sẽ có nhiều thay đổi tốt đẹp.' },
+            { id: 72, title: 'Đệ Thất Thập Nhị Hạ Hạ', poem: '河邊楊柳不藏鶯\n樹上花開結不成\n借問吉凶何處是\n勸君不用費調羹', thanh_y: 'Liễu bên sông không giấu được chim oanh. Hoa trên cây nở nhưng không kết trái. Xin hỏi may rủi ở đâu. Khuyên bạn không cần phải mất công nấu canh.', tich_xua: '范蠡歸湖 - Phạm Lãi trở về hồ', giai_nghia: 'Mọi việc đều không có kết quả. Nỗ lực vô ích. Không nên tiếp tục.' },
+            { id: 73, title: 'Đệ Thất Thập Tam Hạ Hạ', poem: '憶昔成連理\n如今琴瑟乖\n大猴天上至\n須防他慮來', thanh_y: 'Nhớ xưa kết thành vợ chồng. Nay đàn cầm không hòa hợp. Khỉ lớn trên trời đến. Cần phải đề phòng hắn có ý đồ khác.', tich_xua: '王昭君和番 - Vương Chiêu Quân đi lấy chồng ngoại tộc', giai_nghia: 'Tình cảm rạn nứt. Cần đề phòng có người thứ ba xen vào. Mọi việc không thuận.' },
+            { id: 74, title: 'Đệ Thất Thập Tứ Thượng Cát', poem: '崔巍崔巍復崔巍\n履險如夷去復來\n身似菩提心似鏡\n長安一道放春回', thanh_y: 'Cao ngất, cao ngất lại cao ngất. Đi trên hiểm nguy như đi trên đất bằng, đi rồi lại về. Thân như cây bồ đề, tâm như gương sáng. Một con đường Trường An đón xuân về.', tich_xua: '최앵앵대루 - 최앵앵대루 (Tên Hán Việt không rõ)', giai_nghia: 'Vượt qua nhiều khó khăn, thử thách. Mọi việc đều bình an. Tâm hồn trong sáng, không vướng bụi trần. Tương lai tươi sáng.' },
+            { id: 75, title: 'Đệ Thất Thập Ngũ Trung Bình', poem: '生前結得好緣因\n一笑相逢情自親\n相當人物無高下\n得意稱心萬事新', thanh_y: 'Kiếp trước đã kết được duyên tốt. Một nụ cười gặp nhau tình cảm tự thân thiết. Người ngang tài ngang sức không phân cao thấp. Đắc ý vừa lòng vạn việc mới.', tich_xua: '劉小姐愛蒙正 - Lưu tiểu thư yêu Lã Mông Chính', giai_nghia: 'Gặp được người tâm đầu ý hợp. Mọi việc đều thuận lợi. Hôn nhân tốt đẹp.' },
+            { id: 76, title: 'Đệ Thất Thập Lục Hạ Hạ', poem: '三千法律八千文\n此事如何說與君\n善惡兩途君自作\n一生禍福此中分', thanh_y: 'Ba ngàn pháp luật, tám ngàn văn tự. Việc này biết nói cùng bạn thế nào. Thiện ác hai đường bạn tự làm. Họa phúc cả đời từ đây mà ra.', tich_xua: '蕭何註律 - Tiêu Hà chú giải luật', giai_nghia: 'Mọi việc đều do bản thân tạo ra. Gieo nhân nào gặt quả nấy. Cần phải sống lương thiện.' },
+            { id: 77, title: 'Đệ Thất Thập Thất Thượng Cát', poem: '木有根荄水有源\n君當自此究其原\n莫隨道路人閒話\n訟則終凶是至言', thanh_y: 'Cây có rễ, nước có nguồn. Bạn nên từ đây mà tìm hiểu nguồn gốc. Đừng nghe theo lời đồn đại của người đi đường. Kiện tụng cuối cùng sẽ xấu là lời nói chí lý.', tich_xua: '呂后 राज्य संभालती है - Lữ Hậu cai quản đất nước', giai_nghia: 'Nên tìm hiểu kỹ nguồn gốc sự việc. Đừng tin lời đồn. Nên hòa giải, tránh kiện tụng.' },
+            { id: 78, title: 'Đệ Thất Thập Bát Thượng Cát', poem: '冷水來澆白雪洋\n不寒不熱自溫涼\n要行天下無他事\n惟有中藏一藝強', thanh_y: 'Nước lạnh đến tưới lên biển tuyết trắng. Không lạnh không nóng tự ấm mát. Muốn đi khắp thiên hạ không có việc gì khác. Chỉ có trong mình một nghề giỏi.', tich_xua: '秦叔寶救李淵 - Tần Thúc Bảo cứu Lý Uyên', giai_nghia: 'Cuộc sống bình yên, không có sóng gió. Chỉ cần có một nghề giỏi thì có thể đi khắp nơi.' },
+            { id: 79, title: 'Đệ Thất Thập Cửu Hạ Hạ', poem: '事如麻\n理多錯\n日夜想\n寢與食', thanh_y: 'Việc như tơ vò. Lý lẽ nhiều sai sót. Ngày đêm suy nghĩ. Mất ăn mất ngủ.', tich_xua: '文種不聽范蠡 - Văn Chủng không nghe lời Phạm Lãi', giai_nghia: 'Gặp nhiều chuyện rối ren, phiền phức. Suy nghĩ nhiều cũng không có lối thoát. Cần phải bình tĩnh, tìm người giúp đỡ.' },
+            { id: 80, title: 'Đệ Bát Thập Trung Bình', poem: '一朝無事忽遭官\n也是門衰墳未安\n改換門庭興事業\n遠離災難免禍端', thanh_y: 'Một hôm vô sự bỗng gặp chuyện quan. Cũng là do nhà suy, mồ mả chưa yên. Thay đổi cửa nhà, gây dựng sự nghiệp. Xa rời tai nạn, tránh khỏi tai họa.', tich_xua: '寇準фукусима - Khấu Chuẩn Fukushima (Tên Hán Việt không rõ)', giai_nghia: 'Gặp tai bay vạ gió. Cần phải xem lại phong thủy nhà cửa, mồ mả. Thay đổi môi trường sống, làm ăn sẽ tốt hơn.' },
+            { id: 81, title: 'Đệ Bát Thập Nhất Thượng Cát', poem: '梧桐葉落秋將暮\n行客歸程指故鄉\n忽遇家人相引接\n當時র্ন\n\n酒滿盃', thanh_y: 'Lá ngô đồng rụng, thu sắp tàn. Khách đi đường trở về quê cũ. Bỗng gặp người nhà ra đón tiếp. Lúc đó rượu đầy chén.', tich_xua: '寇公任雷陽 - Khấu Công nhận chức ở Lôi Dương', giai_nghia: 'Người đi xa sắp trở về. Gia đình đoàn tụ. Mọi việc đều vui vẻ, hạnh phúc.' },
+            { id: 82, title: 'Đệ Bát Thập Nhị Trung Bình', poem: '炎炎烈火焰燒天\n焰裏還生一朵蓮\n到底得成終不害\n依然生葉長根枝', thanh_y: 'Lửa dữ cháy hừng hực đốt trời. Trong lửa lại mọc ra một đóa sen. Cuối cùng thành công không bị hại. Vẫn mọc lá dài cành rễ.', tich_xua: '火燒葫蘆谷 - Lửa đốt hang Hồ Lô', giai_nghia: 'Trong nguy có cơ. Vượt qua khó khăn sẽ có thành công lớn. Mọi việc tưởng như thất bại nhưng cuối cùng lại tốt đẹp.' },
+            { id: 83, title: 'Đệ Bát Thập Tam Hạ Hạ', poem: '恍惚番身已發\n言語誰知是假\n只緣一點慈悲\nOCKHAM đến cầu cứu', thanh_y: 'Hoảng hốt, thân mình đã sốt. Lời nói ai biết là giả. Chỉ vì một chút từ bi. OCKHAM đến cầu cứu.', tich_xua: '諸葛亮隴上割麥 - Gia Cát Lượng cắt lúa trên ruộng隴', giai_nghia: 'Bị người khác lừa dối. Lòng tốt bị lợi dụng. Cần phải cẩn thận, không nên tin người thái quá.' },
+            { id: 84, title: 'Đệ Bát Thập Tứ Hạ Hạ', poem: '一輪明月照人來\n銀燭輝煌映玉台\n未久忽被浮雲翳\n光明不見帶愁回', thanh_y: 'Một vầng trăng sáng chiếu đến người. Nến bạc sáng ngời chiếu đài ngọc. Chưa lâu bỗng bị mây nổi che khuất. Ánh sáng không thấy, mang sầu trở về.', tich_xua: '須賈害范雎 - Tu Giả hại Phạm Thư', giai_nghia: 'Mọi việc đang tốt đẹp bỗng gặp trắc trở. Niềm vui ngắn chẳng tày gang. Cần phải chuẩn bị tinh thần đối mặt với khó khăn.' },
+            { id: 85, title: 'Đệ Bát Thập Ngũ Trung Bình', poem: '一春風雨正瀟瀟\n千里行人去路迢\n野渡無人舟自橫\n水邊歸雁不成橋', thanh_y: 'Một mùa xuân gió mưa tầm tã. Người đi ngàn dặm đường xa. Bến đò hoang vắng thuyền tự trôi ngang. Bên bờ nước nhạn về không thành cầu.', tich_xua: '姜女哭倒長城 - Nàng Khương khóc đổ Trường Thành', giai_nghia: 'Gặp nhiều khó khăn, trắc trở. Mọi việc đều không thuận lợi. Cần phải kiên nhẫn chờ đợi.' },
+            { id: 86, title: 'Đệ Bát Thập Lục Thượng Cát', poem: '一舟行貨好招邀\n積少成多自富饒\n凡事稱人多得利\n莖幹花卉有根苗', thanh_y: 'Một thuyền hàng hóa tốt mời gọi. Tích ít thành nhiều tự giàu có. Mọi việc vừa lòng người, được nhiều lợi. Thân cành hoa cỏ có rễ mầm.', tich_xua: '管仲貧賤 - Quản Trọng lúc nghèo hèn', giai_nghia: 'Kinh doanh thuận lợi. Tích tiểu thành đại. Mọi việc đều có nền tảng vững chắc, sẽ phát triển tốt.' },
+            { id: 87, title: 'Đệ Bát Thập Thất Hạ Hạ', poem: '陰謀詭計總無根\n畫餅充饑實難吞\n餅一樣般依樣畫\n सलाह लेकर काम करना', thanh_y: 'Âm mưu quỷ kế đều không có gốc. Vẽ bánh để đỡ đói thật khó nuốt. Bánh vẽ ra y như cũ. Nên nghe lời khuyên mà làm việc.', tich_xua: '武侯與子敬同舟 - Võ Hầu và Tử Kính cùng thuyền', giai_nghia: 'Mọi kế hoạch đều là hư ảo, không thực tế. Không nên tin vào những lời hứa suông. Cần phải có hành động cụ thể.' },
+            { id: 88, title: 'Đệ Bát Thập Bát Thượng Cát', poem: '木為一虎在當街\n誰敢前來弄爪牙\n輕輕一嚕隨他去\n無損無傷轉回家', thanh_y: 'Gỗ làm một con hổ ở giữa phố. Ai dám đến gần vuốt ve nanh vuốt. Nhẹ nhàng vuốt ve một cái rồi đi theo nó. Không tổn hại, không bị thương, trở về nhà.', tich_xua: '龐涓敗馬陵道 - Bàng Quyên thất bại ở đường Mã Lăng', giai_nghia: 'Uy thế lớn, không ai dám động đến. Mọi việc đều thuận lợi, không gặp trở ngại. Bình an vô sự.' },
+            { id: 89, title: 'Đệ Bát Thập Cửu Thượng Cát', poem: '四野無雲禾稼濃\n一家歡樂太平歌\n誰知一夜狂風雨\n吹損田疇禾苗多', thanh_y: 'Bốn bề không mây, lúa thóc tươi tốt. Một nhà vui vẻ hát bài thái bình. Ai biết một đêm gió mưa cuồng phong. Thổi hại ruộng đồng, lúa mạ rất nhiều.', tich_xua: '班超歸玉門關 - Ban Siêu trở về cửa ải Ngọc Môn', giai_nghia: 'Đang yên ổn, vui vẻ bỗng gặp tai họa bất ngờ. Cần phải cẩn thận, đề phòng. Mọi việc có thể thay đổi đột ngột.' },
+            { id: 90, title: 'Đệ Cửu Thập Trung Bình', poem: '忽言一信向天飛\n泰山寶貝滿船歸\n若問路途成好事\n前頭仍有貴人推', thanh_y: 'Bỗng một tin bay đến trời. Núi Thái châu báu đầy thuyền về. Nếu hỏi đường đi có thành chuyện tốt không. Phía trước vẫn có quý nhân thúc đẩy.', tich_xua: '韋丹贈船 - Vi Đan tặng thuyền', giai_nghia: 'Sắp có tin vui, tài lộc đến. Mọi việc đều thuận lợi. Có quý nhân giúp đỡ.' },
+            { id: 91, title: 'Đệ Cửu Thập Nhất Trung Bình', poem: '好展愁眉出眾來\n前途改變喜安泰\n萬里長風欣得意\n運亨時泰百花開', thanh_y: 'Vui vẻ giãn mày ra khỏi đám đông. Tương lai thay đổi, vui mừng, an thái. Vạn dặm gió lớn, vui mừng đắc ý. Vận may hanh thông, thời thế tốt đẹp, trăm hoa đua nở.', tich_xua: '趙玄壇騎虎 - Triệu Huyền Đàn cưỡi hổ', giai_nghia: 'Mọi lo lắng sẽ qua. Tương lai tươi sáng. Vận may đã đến, mọi việc đều thành công.' },
+            { id: 92, title: 'Đệ Cửu Thập Nhị Thượng Cát', poem: '今年禾穀不如前\n物價喧騰百倍添\n從此時來運轉\n好事好事日日見', thanh_y: 'Năm nay lúa thóc không bằng năm trước. Giá cả ồn ào tăng gấp trăm lần. Từ đây thời vận xoay chuyển. Chuyện tốt, chuyện tốt ngày ngày thấy.', tich_xua: '蔡卿報恩 - Thái Khanh báo ơn', giai_nghia: 'Hiện tại khó khăn nhưng sắp có chuyển biến tốt. Vận may sắp đến. Mọi việc sẽ tốt đẹp hơn.' },
+            { id: 93, title: 'Đệ Cửu Thập Tam Trung Bình', poem: '春來雨水太連綿\n入夏晴乾雨又愆\n節氣直交三伏後\n田疇方得穀將年', thanh_y: 'Xuân đến mưa nhiều lênh láng. Vào hè trời tạnh, mưa lại hiếm. Tiết khí đến thẳng sau tam phục. Ruộng đồng mới được lúa thóc bội thu.', tich_xua: '高宗得傅說 - Cao Tông được Phó Duyệt', giai_nghia: 'Mọi việc ban đầu không thuận lợi. Cần phải kiên nhẫn chờ đợi. Thời cơ đến vào cuối năm, sẽ có thành công lớn.' },
+            { id: 94, title: 'Đệ Cửu Thập Tứ Hạ Hạ', poem: '一般行貨好盤算\n執柯伐柯柄在手\n善惡禍福隨人作\n從來喜懼由心生', thanh_y: 'Hàng hóa thông thường nên tính toán kỹ. Cầm cán rìu để đẽo cán rìu, cán ở trong tay. Thiện ác, họa phúc do người tạo ra. Từ trước đến nay, vui buồn đều do tâm sinh.', tich_xua: '伯夷叔齊採薇 - Bá Di, Thúc Tề hái rau vi', giai_nghia: 'Cần phải cẩn thận trong kinh doanh. Mọi việc đều có nguyên nhân của nó. Tâm trạng ảnh hưởng đến kết quả.' },
+            { id: 95, title: 'Đệ Cửu Thập Ngũ Trung Bình', poem: '喜未穩\n悲已遭\n大雨狂風吹古木\n人人盡道不堅牢', thanh_y: 'Vui chưa ổn. Buồn đã gặp. Mưa lớn gió to thổi cây cổ thụ. Mọi người đều nói không vững chắc.', tich_xua: '張綱埋輪 - Trương Cương chôn bánh xe', giai_nghia: 'Niềm vui chưa trọn vẹn đã gặp chuyện buồn. Gặp nhiều khó khăn, thử thách. Cần phải cẩn thận, giữ mình.' },
+            { id: 96, title: 'Đệ Cửu Thập Lục Thượng Cát', poem: '婚姻子息莫嫌遲\n但把精神仗佛持\n四十年前須報應\n功圓行滿育男兒', thanh_y: 'Hôn nhân, con cái đừng chê muộn. Cứ đem tinh thần nương tựa vào Phật. Bốn mươi năm trước cần phải có báo ứng. Công đức viên mãn sẽ sinh con trai.', tich_xua: '山濤見王衍 - Sơn Đào gặp Vương Diễn', giai_nghia: 'Mọi việc sẽ thành công nhưng cần phải chờ đợi. Nên làm nhiều việc thiện. Sẽ được đền đáp xứng đáng.' },
+            { id: 97, title: 'Đệ Cửu Thập Thất Thượng Thượng', poem: '五十功名心已灰\n那知富貴逼人來\n更行好事存方寸\n壽比岡陵位鼎台', thanh_y: 'Năm mươi tuổi công danh lòng đã nguội. Nào biết phú quý ép người đến. Lại làm việc tốt, giữ tấm lòng. Tuổi thọ như núi cao, địa vị như đỉnh vạc.', tich_xua: '買臣五十富貴 - Mãi Thần năm mươi tuổi mới giàu sang', giai_nghia: 'Tuổi già gặp vận may. Công danh, phú quý sẽ đến bất ngờ. Cần phải sống tốt, làm việc thiện.' },
+            { id: 98, title: 'Đệ Cửu Thập Bát Trung Bình', poem: '經營謀望本來強\n誰知頭緒亂如麻\n渾身渾身都是汗\nவருத்தம் அடைந்து வீடு திரும்பு', thanh_y: 'Kinh doanh, mưu tính vốn đã mạnh. Ai biết đầu mối rối như tơ vò. Toàn thân đều là mồ hôi. Buồn bã trở về nhà.', tich_xua: '薛仁貴困白虎關 - Tiết Nhân Quý bị vây ở cửa ải Bạch Hổ', giai_nghia: 'Gặp nhiều chuyện rối ren, phiền phức. Nỗ lực nhiều nhưng không có kết quả. Cần phải bình tĩnh, tìm cách giải quyết khác.' },
+            { id: 99, title: 'Đệ Cửu Thập Cửu Thượng Cát', poem: '貴人遭遇水雲鄉\n冷淡生涯志氣昂\n龍虎相隨在深山\n君爾何須背故鄉', thanh_y: 'Quý nhân gặp gỡ ở nơi sông nước mây mù. Cuộc sống đạm bạc nhưng chí khí cao ngạo. Rồng hổ theo nhau ở trong núi sâu. Bạn sao phải rời bỏ quê hương.', tich_xua: '陶淵明賞菊 - Đào Uyên Minh ngắm hoa cúc', giai_nghia: 'Sẽ gặp được quý nhân. Cuộc sống tuy giản dị nhưng tinh thần thoải mái. Không nên đi xa, ở lại quê hương sẽ tốt hơn.' },
+            { id: 100, title: 'Đệ Nhất Bách Thượng Thượng', poem: '我本天仙雷雨師\n吉凶禍福我先知\n至誠禱告皆靈驗\n抽得終籤百事宜', thanh_y: 'Ta vốn là tiên trên trời, thầy của sấm mưa. May rủi, họa phúc ta biết trước. Thành tâm cầu nguyện đều linh nghiệm. Rút được quẻ cuối cùng, trăm việc đều tốt.', tich_xua: '唐明皇禱告天 - Đường Minh Hoàng cầu nguyện trời', giai_nghia: 'Đây là quẻ tốt nhất. Mọi việc đều được thần linh che chở, giúp đỡ. Cầu gì được nấy, mọi sự đều thành công viên mãn.' }
+        ];
+        
+        // --- LOGIC TRANG WEB ---
+        const huXam = document.getElementById('hu-xam');
+        const interactionZone = document.getElementById('interaction-zone');
+        const keoZone = document.getElementById('keo-zone');
+        const btnGieoKeo = document.getElementById('btnGieoKeo');
+        const messageBox = document.getElementById('message-box');
+        const keo1 = document.getElementById('keo1');
+        const keo2 = document.getElementById('keo2');
+        const resultCard = document.getElementById('result-card');
+        const btnReset = document.getElementById('btnReset');
+
+        let currentStickIndex = null; // Dùng index thay vì number để tránh lỗi
+        let isProcessing = false;
+
+        huXam.addEventListener('click', () => {
+            if (isProcessing) return;
+            isProcessing = true;
+            
+            huXam.classList.add('shake');
+            messageBox.textContent = 'Đang xin xăm...';
+
+            setTimeout(() => {
+                huXam.classList.remove('shake');
+                currentStickIndex = Math.floor(Math.random() * XAM_DATA.length);
+                const selectedXam = XAM_DATA[currentStickIndex];
+                
+                interactionZone.classList.add('hidden');
+                keoZone.classList.remove('hidden');
+                document.getElementById('keo-message').textContent = `Đã xin được Xăm số ${selectedXam.id}. Xin gieo keo để xác nhận.`;
+                messageBox.textContent = '';
+                isProcessing = false;
+            }, 1500);
+        });
+
+        btnGieoKeo.addEventListener('click', () => {
+            if (isProcessing) return;
+            isProcessing = true;
+            btnGieoKeo.disabled = true;
+
+            messageBox.textContent = 'Đang gieo keo...';
+            
+            keo1.style.transform = `translateY(-40px) rotate(${Math.random() * 360}deg)`;
+            keo2.style.transform = `translateY(-40px) rotate(${Math.random() * 360}deg)`;
+
+            setTimeout(() => {
+                const outcome = Math.random();
+                let result = '';
+                
+                // SỬA LỖI ẢNH 3 & 4: URL MỚI CHO ẢNH KEO
+                const urlKeoNgua = 'https://i.ibb.co/zrRLV7B/keo.png'; // Mặt ngửa
+                const urlKeoSap = 'https://i.imgur.com/yT3E2wM.png'; // Mặt sấp
+
+                if (outcome <= 0.7) {
+                    result = 'thanh_keo';
+                    keo1.src = urlKeoNgua;
+                    keo2.src = urlKeoSap;
+                } else if (outcome <= 0.85) {
+                    result = 'am_keo';
+                    keo1.src = urlKeoSap;
+                    keo2.src = urlKeoSap;
+                } else {
+                    result = 'duong_keo';
+                    keo1.src = urlKeoNgua;
+                    keo2.src = urlKeoNgua;
+                }
+                
+                keo1.style.transform = 'translateY(0) rotate(0deg)';
+                keo2.style.transform = 'translateY(0) rotate(0deg)';
+
+                handleKeoResult(result);
+            }, 1000);
+        });
+        
+        function handleKeoResult(result) {
+            if (result === 'thanh_keo') {
+                messageBox.textContent = 'Thánh ý đã ứng. Xin mời xem lời giải quẻ xăm.';
+                messageBox.style.color = 'green';
+                setTimeout(displayResult, 1000);
+            } else {
+                messageBox.style.color = 'red';
+                if (result === 'am_keo') {
+                    messageBox.textContent = 'Âm Keo! Thánh ý không chấp thuận. Xin hãy thành tâm xin lại từ đầu.';
+                } else {
+                    messageBox.textContent = 'Dương Keo! Thánh ý cười, việc hỏi chưa rõ. Xin hãy xin lại từ đầu.';
+                }
+                btnReset.classList.remove('hidden'); // Cho phép reset ngay
+                isProcessing = false;
+                btnGieoKeo.disabled = false;
+            }
+        }
+        
+        function displayResult() {
+            const xam = XAM_DATA[currentStickIndex];
+            if (!xam) return;
+
+            document.getElementById('xam-title').textContent = `Xăm ${xam.id} - ${xam.title}`;
+            document.getElementById('xam-poem').textContent = xam.poem;
+            document.getElementById('xam-thanh-y').textContent = xam.thanh_y;
+            document.getElementById('xam-tich-xua').textContent = xam.tich_xua;
+            document.getElementById('xam-giai-nghia').textContent = xam.giai_nghia;
+
+            document.getElementById('main-content').classList.add('hidden');
+            resultCard.classList.remove('hidden');
+            btnReset.classList.remove('hidden');
+        }
+
+        btnReset.addEventListener('click', reset);
+
+        function reset() {
+            currentStickIndex = null;
+            isProcessing = false;
+            
+            interactionZone.classList.remove('hidden');
+            keoZone.classList.add('hidden');
+            resultCard.classList.add('hidden');
+            btnReset.classList.add('hidden');
+
+            messageBox.textContent = '';
+            messageBox.style.color = 'inherit';
+            btnGieoKeo.disabled = false;
+            
+            // Đặt lại ảnh keo về mặc định
+            const urlKeoDefault = 'https://i.ibb.co/zrRLV7B/keo.png';
+            keo1.src = urlKeoDefault;
+            keo2.src = urlKeoDefault;
+        }
+
+    </script>
+<script>
+document.getElementById("btnGieoKeo").addEventListener("click", function () {
+    const keo1 = document.getElementById("keo1");
+    const keo2 = document.getElementById("keo2");
+    keo1.style.transform = "rotate(360deg)";
+    keo2.style.transform = "rotate(-360deg)";
+    setTimeout(() => {
+        keo1.style.transform = "";
+        keo2.style.transform = "";
+    }, 1000);
+});
+</script><script>
+document.getElementById("btnReset").addEventListener("click", function () {
+    document.getElementById("result-card").classList.add("hidden");
+    document.getElementById("btnReset").classList.add("hidden");
+    document.getElementById("keo-zone").classList.add("hidden");
+    document.getElementById("message-box").textContent = "";
+    document.getElementById("interaction-zone").classList.remove("hidden");
+});
+</script></body>
+</html>
